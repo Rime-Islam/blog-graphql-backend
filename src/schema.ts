@@ -10,7 +10,17 @@ export const typeDefs = `#graphql
          name: String!, 
          email: String!, 
          password: String!
-         ): User
+         ): userArgs,
+
+      login(
+         email: String!,
+         password: String!
+         ): userArgs
+   }
+
+   type userArgs {
+      userError: String
+      token: String
    }
 
 type Post {

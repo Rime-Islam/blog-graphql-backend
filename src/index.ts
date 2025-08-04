@@ -6,7 +6,7 @@ import { Prisma, PrismaClient } from "./generated/prisma/index.js";
 import type { DefaultArgs } from "@prisma/client/runtime/binary";
 import { jwtHelper } from "./utils/jwtHelper.js";
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 interface Context {
   prisma: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>;

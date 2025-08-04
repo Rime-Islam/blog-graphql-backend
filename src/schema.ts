@@ -2,7 +2,7 @@ export const typeDefs = `#graphql
    type Query {
       posts: [Post]
       users: [User]
-      profiles: [Profile]
+      profile(userId: ID!): Profile
    }
 
    type Mutation {
@@ -18,26 +18,15 @@ export const typeDefs = `#graphql
          password: String!
          ): userArgs,
 
-      createPost(post: PostInput!): postArgs!,
+      addPost(post: PostInput!): postArgs!,
       updatePost(
          postId: Int!,
          post: PostInput
          ): postArgs,
+      deletePost(postId: ID!): postArgs,
+      publishPost(postId: ID!): postArgs
 
 
-   }
-
-   type userArgs {
-      userError: String
-      token: String
-   }
-   type postArgs {
-      userError: String
-      post: Post
-   }
-   input PostInput {
-      title: String
-      content: String
    }
 
 type Post {
@@ -63,6 +52,17 @@ type Post {
    bio: String
    createdAt: String!
    user: User!
-
- }
+}
+    type userArgs {
+      userError: String
+      token: String
+   }
+   type postArgs {
+      userError: String
+      post: Post
+   }
+   input PostInput {
+      title: String
+      content: String
+   }
 `;

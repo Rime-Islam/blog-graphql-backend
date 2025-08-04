@@ -3,7 +3,7 @@ import { prisma } from "../index.js"
 import type { user } from "../generated/prisma/client.js";
 
 
-const batchUsers = async(ids: number[]): Promise<user[]> => {
+const batchUsers = async(ids: number[]): Promise<(user | undefined)[]> => {
     // ids: [3, 4, 5, 6, 7, 8, 9]
     const users = await prisma.user.findMany({
         where: {
